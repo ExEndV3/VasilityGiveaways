@@ -1,0 +1,10 @@
+name: VasilityGiveaways
+version: '${project.version}'
+main: com.me.exendv2.vasilitygiveaways.VasilityGiveaways
+api-version: 1.19
+authors: [ ExEndV2 ]
+description: A Giveaway plugin by ExEndV2
+commands:
+  giveaway:
+    usage: /<command>
+    description: Main Command
