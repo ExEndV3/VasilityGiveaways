@@ -6,8 +6,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class VasilityGiveaways extends JavaPlugin {
 
+    public static VasilityGiveaways instance;
+
     @Override
     public void onEnable() {
+        instance = this;
         getServer().getPluginManager().registerEvents(new MenuClickListener(), this);
         getServer().getPluginCommand("giveaway").setExecutor(new MainCommand());
         // Plugin startup logic

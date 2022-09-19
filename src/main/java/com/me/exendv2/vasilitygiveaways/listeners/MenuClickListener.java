@@ -5,10 +5,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.HashMap;
 
 public class MenuClickListener implements Listener {
 
     MenuManager menuManager = new MenuManager();
+    HashMap<String, ItemStack> Prizes = new HashMap<>();
 
     @EventHandler
     public void MenuClick(InventoryClickEvent e){
