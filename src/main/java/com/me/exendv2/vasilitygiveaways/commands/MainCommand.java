@@ -1,7 +1,7 @@
 package com.me.exendv2.vasilitygiveaways.commands;
 
-import com.me.exendv2.vasilitygiveaways.utils.DataManager;
-import com.me.exendv2.vasilitygiveaways.utils.MenuManager;
+import com.me.exendv2.vasilitygiveaways.managers.DataManager;
+import com.me.exendv2.vasilitygiveaways.managers.MenuManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,11 +15,11 @@ public class MainCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if(args.length == 0){
-            sender.sendMessage("Usage: /giveaway <identifer>");
+        if (!(sender instanceof Player)){
+            sender.sendMessage("§cThis command is only available for players!");
             return true;
         }
-        String identifer = args[0];
+
         menuManager.openPrizesInventory((Player) sender);
         return true;
     }
