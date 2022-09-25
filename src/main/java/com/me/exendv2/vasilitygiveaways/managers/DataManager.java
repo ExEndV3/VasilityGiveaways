@@ -9,5 +9,6 @@ import java.util.Objects;
 public class DataManager {
 
     public static ArrayList<ItemStack> giveawayPrizes = new ArrayList<>();
-    public static HashMap<String, Objects> settings = new HashMap<>();
+    // 5 Minutes
+    public static int duration = 300;
 }

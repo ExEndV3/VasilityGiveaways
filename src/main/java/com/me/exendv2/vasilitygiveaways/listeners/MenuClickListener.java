@@ -12,12 +12,11 @@ import org.bukkit.inventory.ItemStack;
 public class MenuClickListener implements Listener {
 
     MenuManager menuManager = new MenuManager();
-    DataManager dataManager = new DataManager();
 
     @EventHandler
     public void MenuClick(InventoryClickEvent e){
 
-        Inventory Menu = e.getClickedInventory();
+        Inventory Menu = e.getWhoClicked().getOpenInventory().getTopInventory();
         // Prizes Menu Checker
         if (Menu == MenuManager.PrizesMenu){
 
@@ -55,21 +54,21 @@ public class MenuClickListener implements Listener {
             int slot = e.getSlot();
             if (slot == 13) {
                 if (e.getClick() == ClickType.LEFT){
-                    MenuManager.duration = MenuManager.duration + 1;
+                    DataManager.duration = DataManager.duration + 1;
                 }
                 if (e.getClick() == ClickType.SHIFT_LEFT) {
-                    MenuManager.duration = MenuManager.duration + 100;
+                    DataManager.duration = DataManager.duration + 100;
                 }
                 if (e.getClick() == ClickType.RIGHT){
-                    if (MenuManager.duration != 1) {
-                        MenuManager.duration = MenuManager.duration - 1;
+                    if (DataManager.duration != 1) {
+                        DataManager.duration = DataManager.duration - 1;
                     }
                 }
                 if (e.getClick() == ClickType.SHIFT_RIGHT) {
-                    if (MenuManager.duration <= 100){
-                        MenuManager.duration = 1;
+                    if (DataManager.duration <= 100){
+                        DataManager.duration = 1;
                     } else {
-                        MenuManager.duration = MenuManager.duration - 100;
+                        DataManager.duration = DataManager.duration - 100;
                     }
                 }
                 Menu.setItem(13, menuManager.durationItem());

@@ -1,9 +1,10 @@
 package com.me.exendv2.vasilitygiveaways.managers;
 
+import com.me.exendv2.vasilitygiveaways.VasilityGiveaways;
+import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -12,6 +13,7 @@ import java.util.Arrays;
 
 public class MenuManager {
 
+    Permission groups = VasilityGiveaways.perms;
     TimeManager timeManager = new TimeManager();
 
     public final Integer[] PrizesDefaultSlots = {0, 1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9
@@ -28,9 +30,6 @@ public class MenuManager {
     public static Inventory GoalMenu;
     public static Inventory PrizesPreview;
     public static boolean isConfirm;
-
-    // 5 Minutes
-    public static int duration = 300;
     public static boolean someoneCreating = false;
 
 
@@ -46,6 +45,12 @@ public class MenuManager {
         DurationMenu = Bukkit.createInventory(null, 45, "Duration");
 
         return DurationMenu;
+    }
+
+    private Inventory GroupInventory() {
+        GroupMenu = Bukkit.createInventory(null, 54, "Groups");
+
+        return GroupMenu;
     }
 
 
@@ -74,6 +79,15 @@ public class MenuManager {
         DurationMenu.setItem(10, durationItem());
     }
 
+    public void openGroupInventory(HumanEntity player) {
+        player.openInventory(GroupInventory());
+
+        for (String s : groups.getGroups()){
+
+        }
+
+    }
+
 
     // Item Creator
     private ItemStack createMenuItem(final Material material, final String name, final String... lore) {
@@ -92,15 +106,17 @@ public class MenuManager {
     }
 
     public ItemStack durationItem(){
-        return createMenuItem(Material.CLOCK, "§e§lDuration", "§c" + duration + " seconds", "§c" + timeManager.getDurationString(duration), "", "§a§l+1 §eLeft-Click", "§a§l+100 §eShift + Left-Click", "", "§c§l-1 §eRight-Click", "§c§l-100 §eShift + Right-Click");
+        return createMenuItem(Material.CLOCK, "§e§lDuration", "§c" + DataManager.duration + " seconds", "§c" + timeManager.getDurationString(DataManager.duration), "", "§a§l+1 §eLeft-Click", "§a§l+100 §eShift + Left-Click", "", "§c§l-1 §eRight-Click", "§c§l-100 §eShift + Right-Click");
     }
 
     public void cancelCreation(HumanEntity p){
         for (ItemStack item : DataManager.giveawayPrizes){
             p.getInventory().addItem(item);
         }
+
         someoneCreating = false;
-        duration = 300;
+        DataManager.duration = 300;
         DataManager.giveawayPrizes.clear();
+
     }
 }
