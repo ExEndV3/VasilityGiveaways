@@ -23,7 +23,7 @@ public class MenuManager {
     , 43};
 
     public static Inventory PrizesMenu;
-    public static Inventory SettingsMenu;
+    public static Inventory DurationMenu;
     public static Inventory GroupMenu;
     public static Inventory GoalMenu;
     public static Inventory PrizesPreview;
@@ -42,10 +42,10 @@ public class MenuManager {
         return PrizesMenu;
     }
 
-    private Inventory settingsInventory() {
-        SettingsMenu = Bukkit.createInventory(null, 54, "Settings");
+    private Inventory DurationInventory() {
+        DurationMenu = Bukkit.createInventory(null, 54, "Duration");
 
-        return SettingsMenu;
+        return DurationMenu;
     }
 
 
@@ -63,11 +63,11 @@ public class MenuManager {
 
     }
 
-    public void openSettingsInventory(HumanEntity player) {
-        player.openInventory(settingsInventory());
+    public void openDurationInventory(HumanEntity player) {
+        player.openInventory(DurationInventory());
 
-        SettingsMenu.setItem(49, createMenuItem(Material.EMERALD, "§a§lConfirm"));
-        SettingsMenu.setItem(10, durationItem());
+        DurationMenu.setItem(49, createMenuItem(Material.EMERALD, "§a§lConfirm"));
+        DurationMenu.setItem(10, durationItem());
     }
 
 

@@ -27,7 +27,7 @@ public class CloseInventoryListener implements Listener {
             menuManager.cancelCreation(e.getPlayer());
         }
 
-        if (Menu == MenuManager.SettingsMenu) {
+        if (Menu == MenuManager.DurationMenu) {
             e.getPlayer().sendMessage("§c§lGiveaway Creation has been cancelled!");
             menuManager.cancelCreation(e.getPlayer());
 

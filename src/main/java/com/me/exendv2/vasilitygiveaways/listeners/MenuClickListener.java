@@ -30,7 +30,7 @@ public class MenuClickListener implements Listener {
                     }
                 }
                 if (!DataManager.giveawayPrizes.isEmpty()){
-                    menuManager.openSettingsInventory(e.getWhoClicked());
+                    menuManager.openDurationInventory(e.getWhoClicked());
                 } else {
                     e.getWhoClicked().closeInventory();
                     e.getWhoClicked().sendMessage("§c§lGiveaway Creation has been cancelled because there are no items in prizes inventory!");
@@ -50,10 +50,10 @@ public class MenuClickListener implements Listener {
 
 
         // Settings Menu Checker
-        if (Menu == MenuManager.SettingsMenu){
+        if (Menu == MenuManager.DurationMenu){
 
             int slot = e.getSlot();
-            if (slot == 10) {
+            if (slot == 13) {
                 if (e.getClick() == ClickType.LEFT){
                     MenuManager.duration = MenuManager.duration + 1;
                 }
@@ -66,7 +66,7 @@ public class MenuClickListener implements Listener {
                 if (e.getClick() == ClickType.SHIFT_RIGHT) {
                     MenuManager.duration = MenuManager.duration - 100;
                 }
-                Menu.setItem(10, menuManager.durationItem());
+                Menu.setItem(13, menuManager.durationItem());
             }
             e.setCancelled(true);
         }
