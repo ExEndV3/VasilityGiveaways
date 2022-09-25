@@ -83,7 +83,10 @@ public class MenuManager {
         player.openInventory(GroupInventory());
 
         for (String s : groups.getGroups()){
-
+            int i = 0;
+            if (groups.groupHas("", s, "vasilitygiveaways.joingiveaway")){
+                GroupMenu.setItem(i, createMenuItem(Material.DIAMOND, s));
+            }
         }
 
     }

@@ -19,9 +19,6 @@ public class MainCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)){
-            for (String s : groups.getGroups()){
-                sender.sendMessage(s);
-            }
             sender.sendMessage("§cThis command is only available for players!");
             return true;
         }

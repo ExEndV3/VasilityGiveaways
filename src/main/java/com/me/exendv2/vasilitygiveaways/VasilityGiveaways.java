@@ -15,11 +15,11 @@ public final class VasilityGiveaways extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        setupPermissions();
         getServer().getPluginManager().registerEvents(new MenuClickListener(), this);
         getServer().getPluginManager().registerEvents(new CloseInventoryListener(), this);
         getServer().getPluginCommand("giveaway").setExecutor(new MainCommand());
 
-        setupPermissions();
         // Plugin startup logic
 
     }
