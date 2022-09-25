@@ -49,7 +49,7 @@ public class MenuClickListener implements Listener {
         }
 
 
-        // Settings Menu Checker
+        // Duration Menu Checker
         if (Menu == MenuManager.DurationMenu){
 
             int slot = e.getSlot();
@@ -61,10 +61,16 @@ public class MenuClickListener implements Listener {
                     MenuManager.duration = MenuManager.duration + 100;
                 }
                 if (e.getClick() == ClickType.RIGHT){
-                    MenuManager.duration = MenuManager.duration - 1;
+                    if (MenuManager.duration != 1) {
+                        MenuManager.duration = MenuManager.duration - 1;
+                    }
                 }
                 if (e.getClick() == ClickType.SHIFT_RIGHT) {
-                    MenuManager.duration = MenuManager.duration - 100;
+                    if (MenuManager.duration <= 100){
+                        MenuManager.duration = 1;
+                    } else {
+                        MenuManager.duration = MenuManager.duration - 100;
+                    }
                 }
                 Menu.setItem(13, menuManager.durationItem());
             }

@@ -43,7 +43,7 @@ public class MenuManager {
     }
 
     private Inventory DurationInventory() {
-        DurationMenu = Bukkit.createInventory(null, 54, "Duration");
+        DurationMenu = Bukkit.createInventory(null, 45, "Duration");
 
         return DurationMenu;
     }
@@ -66,7 +66,11 @@ public class MenuManager {
     public void openDurationInventory(HumanEntity player) {
         player.openInventory(DurationInventory());
 
-        DurationMenu.setItem(49, createMenuItem(Material.EMERALD, "§a§lConfirm"));
+        for (int i = 0; i < 46; i++){
+            DurationMenu.setItem(i, createMenuItem(Material.GREEN_STAINED_GLASS_PANE, "§1"));
+        }
+
+        DurationMenu.setItem(40, createMenuItem(Material.EMERALD, "§a§lConfirm"));
         DurationMenu.setItem(10, durationItem());
     }
 
